@@ -4,56 +4,145 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Service — Triad</title>
+<meta name="description" content="Terms of Service for Triad, the three-tasks-a-day planner.">
+<meta name="theme-color" content="#0C0C0E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light dark; --ink: #16162a; --muted: #5b5b74; --bg: #fdfdfb; --rule: #e6e6ef; }
-  @media (prefers-color-scheme: dark) {
-    :root { --ink: #edecf5; --muted: #a0a0b8; --bg: #0b0f31; --rule: #262a4e; }
+  /* Tokens lifted from src/theme/tokens.ts — the app is dark-only by design (D12/D48), so
+     these pages are too. Orange is reserved for interactive marks, same rule as the app (§7). */
+  :root {
+    color-scheme: dark;
+    --base: #0C0C0E;
+    --raised: #141416;
+    --ink: #F4F2EE;
+    --muted: #9A9AAE;
+    --rule: #26262A;
+    --accent: #E8733F;
+    --accent-deep: #C44E1B;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0; padding: 48px 16px 96px; background: var(--bg); color: var(--ink);
-    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    background: var(--base);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 42rem; margin: 0 auto; }
-  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .25rem; letter-spacing: -0.02em; }
-  h2 { font-size: 1.1rem; margin: 2.25rem 0 .5rem; letter-spacing: -0.01em; }
-  p { margin: 0 0 1rem; }
-  .updated { color: var(--muted); font-size: .9rem; margin: 0 0 2.5rem; }
-  nav { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: .9rem; }
-  a { color: inherit; }
+  .glow {
+    position: absolute; inset: 0 0 auto; height: 420px; pointer-events: none;
+    background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(232,115,63,0.16), transparent 70%);
+  }
+  .wrap { position: relative; max-width: 44rem; margin: 0 auto; padding: 0 16px 96px; }
+  header { padding: 56px 0 40px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+  .mark {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-family: var(--body); font-weight: 700; font-size: .78rem;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  }
+  .mark::before {
+    content: ""; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 12px rgba(232,115,63,.65);
+  }
+  h1 {
+    font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 7vw, 3rem);
+    line-height: 1.12; letter-spacing: -0.02em; margin: 22px 0 10px;
+  }
+  .updated { color: var(--muted); font-size: .92rem; margin: 0; }
+  section { padding: 34px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  .num {
+    display: block; font-family: var(--body); font-weight: 700; font-size: .74rem;
+    letter-spacing: .18em; color: var(--accent); margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--display); font-weight: 600; font-size: 1.32rem;
+    line-height: 1.3; letter-spacing: -0.01em; margin: 0 0 12px;
+  }
+  section p { margin: 0; color: #DAD8D3; }
+  nav {
+    margin-top: 44px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  }
+  nav a {
+    display: inline-block; text-decoration: none; color: var(--ink);
+    background: var(--raised); border: 1px solid var(--rule);
+    padding: 11px 18px; border-radius: 999px; font-size: .92rem; font-weight: 500;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  nav a:hover { border-color: var(--accent-deep); color: var(--accent); }
+  footer { margin-top: 28px; color: var(--muted); font-size: .85rem; }
+  footer a { color: var(--muted); }
+  @media (max-width: 480px) { body { font-size: 16px; } header { padding-top: 40px; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Terms of Service</h1>
-  <p class="updated">Triad · Last updated 17 September 2026</p>
-  <h2>1. Agreement to these terms</h2>
-  <p>These Terms of Service ("Terms") govern your use of Triad (the "App"), provided by Harshit Creative Studio. By using the App, you agree to these Terms. If you don't agree, don't use the App.</p>
-  <h2>2. What Triad is</h2>
-  <p>Triad helps you commit to three tasks each day, run an optional focus timer against them, and build a streak for completing all three. There is no account and no sign-up — the full daily loop is free and works the moment you open the App. A paid Pro subscription unlocks history, trends, and other insights layered on top of that loop — it never gates the three tasks, the focus timer, or your streak.</p>
-  <h2>3. Who can use it</h2>
-  <p>You must be at least 13 years old (or the minimum age of digital consent where you live, if higher) to use Triad. By using the App you confirm you meet this requirement.</p>
-  <h2>4. No accounts</h2>
-  <p>Triad has no sign-up, no sign-in, and no user accounts. Your tasks, streak, and settings are stored only on your device, and we never see them — there is no server for them to reach. Because there is no account, there is nothing for us to recover for you: if you delete the App, wipe the device, or clear the App’s data, that data is gone. The App’s Back up data feature exports a copy you keep yourself, and using it is your responsibility.</p>
-  <h2>5. Subscriptions and payments</h2>
-  <p>Triad Pro is offered as a monthly subscription, an annual subscription (which may include an introductory free-trial period), or a one-time lifetime purchase. All payments are processed by the Apple App Store or Google Play, not by us directly — we never see or store your payment card details. Subscriptions renew automatically at the listed price until you cancel through your App Store or Play Store account settings; cancelling stops future renewals but does not refund the current billing period. A free trial converts to a paid subscription automatically unless you cancel before it ends. Refunds are governed entirely by Apple’s or Google’s own refund policies — we do not process or guarantee refunds ourselves.</p>
-  <h2>6. Your content</h2>
-  <p>You own whatever you type into Triad — task titles, reflections, and the like. It stays on your device, processed there to provide the App’s features to you (computing your streak and insights, showing your plan back to you). We never receive it, so we cannot read it, share it, or sell it.</p>
-  <h2>7. Acceptable use</h2>
-  <p>Don’t use Triad to store unlawful content, or attempt to reverse-engineer the App. We may stop distributing or supporting the App for anyone who violates this section.</p>
-  <h2>8. Streaks are motivational, not a guarantee</h2>
-  <p>Streaks, freezes, and any other gamified elements are meant to encourage a habit — they carry no monetary value and create no entitlement beyond what’s described in the App itself. We may adjust how streaks, freezes, or scoring work in future versions.</p>
-  <h2>9. Ending your use</h2>
-  <p>You can stop using Triad at any time. Deleting the App, or using Clear local data inside it, permanently removes everything it stored — that is the whole of it, since we hold nothing on our side. Cancel any active subscription separately through your App Store or Play Store settings.</p>
-  <h2>10. Disclaimers</h2>
-  <p>Triad is provided "as is." It’s a productivity tool, not medical, psychological, or financial advice, and we make no guarantee that using it will improve your productivity, habits, or well-being. To the extent permitted by law, we disclaim all warranties, express or implied.</p>
-  <h2>11. Limitation of liability</h2>
-  <p>To the maximum extent permitted by law, Harshit Creative Studio is not liable for any indirect, incidental, or consequential damages arising from your use of, or inability to use, the App, including loss of data kept only on a device that is lost, damaged, or wiped.</p>
-  <h2>12. Changes to these terms</h2>
-  <p>We may update these Terms as the App changes. We’ll update the date at the top of this document; continuing to use the App after an update means you accept the revised Terms.</p>
-  <h2>13. Governing law and contact</h2>
-  <p>These Terms are governed by the laws of India. Questions about these Terms can be sent to harshitcreativestudio@gmail.com.</p>
+<div class="glow"></div>
+<div class="wrap">
+  <header>
+    <span class="mark">Triad</span>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated 17 September 2026</p>
+  </header>
+  <section>
+    <span class="num">01</span><h2>Agreement to these terms</h2>
+    <p>These Terms of Service ("Terms") govern your use of Triad (the "App"), provided by Harshit Creative Studio. By using the App, you agree to these Terms. If you don't agree, don't use the App.</p>
+  </section>
+  <section>
+    <span class="num">02</span><h2>What Triad is</h2>
+    <p>Triad helps you commit to three tasks each day, run an optional focus timer against them, and build a streak for completing all three. There is no account and no sign-up — the full daily loop is free and works the moment you open the App. A paid Pro subscription unlocks history, trends, and other insights layered on top of that loop — it never gates the three tasks, the focus timer, or your streak.</p>
+  </section>
+  <section>
+    <span class="num">03</span><h2>Who can use it</h2>
+    <p>You must be at least 13 years old (or the minimum age of digital consent where you live, if higher) to use Triad. By using the App you confirm you meet this requirement.</p>
+  </section>
+  <section>
+    <span class="num">04</span><h2>No accounts</h2>
+    <p>Triad has no sign-up, no sign-in, and no user accounts. Your tasks, streak, and settings are stored only on your device, and we never see them — there is no server for them to reach. Because there is no account, there is nothing for us to recover for you: if you delete the App, wipe the device, or clear the App’s data, that data is gone. The App’s Back up data feature exports a copy you keep yourself, and using it is your responsibility.</p>
+  </section>
+  <section>
+    <span class="num">05</span><h2>Subscriptions and payments</h2>
+    <p>Triad Pro is offered as a monthly subscription, an annual subscription (which may include an introductory free-trial period), or a one-time lifetime purchase. All payments are processed by the Apple App Store or Google Play, not by us directly — we never see or store your payment card details. Subscriptions renew automatically at the listed price until you cancel through your App Store or Play Store account settings; cancelling stops future renewals but does not refund the current billing period. A free trial converts to a paid subscription automatically unless you cancel before it ends. Refunds are governed entirely by Apple’s or Google’s own refund policies — we do not process or guarantee refunds ourselves.</p>
+  </section>
+  <section>
+    <span class="num">06</span><h2>Your content</h2>
+    <p>You own whatever you type into Triad — task titles, reflections, and the like. It stays on your device, processed there to provide the App’s features to you (computing your streak and insights, showing your plan back to you). We never receive it, so we cannot read it, share it, or sell it.</p>
+  </section>
+  <section>
+    <span class="num">07</span><h2>Acceptable use</h2>
+    <p>Don’t use Triad to store unlawful content, or attempt to reverse-engineer the App. We may stop distributing or supporting the App for anyone who violates this section.</p>
+  </section>
+  <section>
+    <span class="num">08</span><h2>Streaks are motivational, not a guarantee</h2>
+    <p>Streaks, freezes, and any other gamified elements are meant to encourage a habit — they carry no monetary value and create no entitlement beyond what’s described in the App itself. We may adjust how streaks, freezes, or scoring work in future versions.</p>
+  </section>
+  <section>
+    <span class="num">09</span><h2>Ending your use</h2>
+    <p>You can stop using Triad at any time. Deleting the App, or using Clear local data inside it, permanently removes everything it stored — that is the whole of it, since we hold nothing on our side. Cancel any active subscription separately through your App Store or Play Store settings.</p>
+  </section>
+  <section>
+    <span class="num">10</span><h2>Disclaimers</h2>
+    <p>Triad is provided "as is." It’s a productivity tool, not medical, psychological, or financial advice, and we make no guarantee that using it will improve your productivity, habits, or well-being. To the extent permitted by law, we disclaim all warranties, express or implied.</p>
+  </section>
+  <section>
+    <span class="num">11</span><h2>Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, Harshit Creative Studio is not liable for any indirect, incidental, or consequential damages arising from your use of, or inability to use, the App, including loss of data kept only on a device that is lost, damaged, or wiped.</p>
+  </section>
+  <section>
+    <span class="num">12</span><h2>Changes to these terms</h2>
+    <p>We may update these Terms as the App changes. We’ll update the date at the top of this document; continuing to use the App after an update means you accept the revised Terms.</p>
+  </section>
+  <section>
+    <span class="num">13</span><h2>Governing law and contact</h2>
+    <p>These Terms are governed by the laws of India. Questions about these Terms can be sent to harshitcreativestudio@gmail.com.</p>
+  </section>
   <nav><a href="./privacy.html">Privacy Policy</a></nav>
-</main>
+  <footer>Triad is made by Harshit Creative Studio. Questions? <a href="mailto:harshitcreativestudio@gmail.com">harshitcreativestudio@gmail.com</a></footer>
+</div>
 </body>
 </html>
